@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
@@ -20,37 +21,23 @@ namespace WinFormsApp1
 
         private void Listar_Load(object sender, EventArgs e)
         {
-            
-            
-                TextReader leer;
-                leer = new StreamReader("lista.txt");
-          
 
-            string linea = leer.ReadLine();
+                    string cadena1 = "Server=localhost\\SQLEXPRESS01;Database=Registro;Trusted_Connection=True;";
+                    SqlConnection conexion = new SqlConnection();
 
-            while (linea != null)
-            {
+                    conexion.ConnectionString = cadena1;
+                    conexion.Open();
 
-                string[] One = linea.Split('|');
+                    SqlCommand comando = new SqlCommand("SELECT * FROM Alumnos WHERE profesor", conexion);
+                    SqlDataAdapter data = new SqlDataAdapter();
 
-                if (One.Length > 1)
-                {
-                    int n = dataGridView1.Rows.Add();
+                    data.SelectCommand = comando;
 
-                    dataGridView1.Rows[n].Cells[0].Value = One[0];
-                    dataGridView1.Rows[n].Cells[1].Value = One[1];
-                    dataGridView1.Rows[n].Cells[2].Value = One[2];
-                    dataGridView1.Rows[n].Cells[3].Value = One[3];
-                    dataGridView1.Rows[n].Cells[4].Value = One[4];
-                    dataGridView1.Rows[n].Cells[5].Value = One[5];
-                    
-                }
+                    DataTable tabla = new DataTable();
+                    data.Fill(tabla);
+                    dataGridView1.DataSource = tabla;
 
-                linea = leer.ReadLine();
-
-            }
-           
-            leer.Close();
+            conexion.Close();
 
         }
     }

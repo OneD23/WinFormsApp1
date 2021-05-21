@@ -8,99 +8,140 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Data;
 using System.Data.SqlClient;
+
+
 
 namespace WinFormsApp1
 {
     public partial class Calificar : Form
     {
-        public Calificar()
+        public string id;
+        string[] datos = new string[10];
+        public Calificar(string[] ids)
         {
+            datos = ids;
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Nombre_TextChanged(object sender, EventArgs e)
         {
-            TextReader leer;
-            leer = new StreamReader("lista.txt");
-            string matricula = BuscarMatricula.Text;
 
-            TextWriter escribir;
-            escribir = new StreamWriter("lista1.txt");
+        }
 
-            bool aparecio = false;
-            string[] One = new string[50];
-            string linea = leer.ReadLine();
-            while(linea != null)
-            {
-                if (linea.Contains(matricula))
-                {
-                    One = linea.Split('|');
-                    linea = leer.ReadLine();
-                    aparecio = true;
-                }
-                escribir.WriteLine(linea);
-                linea = leer.ReadLine();
-            }
-            if (aparecio)
-            {
-                textBox1.Enabled = true;
-                textBox2.Enabled = true;
-                textBox3.Enabled = true;
-                textBox4.Enabled = true;
-                textBox5.Enabled = true;
-                button1.Enabled = true;
+        private void label2_Click(object sender, EventArgs e)
+        {
 
-                textBox1.Text = One[1];
-                textBox2.Text = One[2];
-                textBox3.Text = One[3];
-                textBox4.Text = One[4];
-                textBox5.Text = One[5];
+        }
 
-            }
+        private void label5_Click(object sender, EventArgs e)
+        {
 
-            leer.Close();
-            escribir.Close();
-
-            TextWriter SobreEscribir;
-            SobreEscribir = new StreamWriter("lista.txt");
-
-            TextReader leer2;
-            leer2 = new StreamReader("lista1.txt");
-
-            string linea2 = leer2.ReadLine();
-            while ( linea2 != null)
-            {
-                SobreEscribir.WriteLine(linea2);
-                linea2 = leer2.ReadLine();
-            }
-
-            leer2.Close();
-            SobreEscribir.Close();
         }
 
         private void Calificar_Load(object sender, EventArgs e)
         {
-            textBox1.Enabled = false;
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = false;
-            textBox5.Enabled = false;
-            button1.Enabled = false;
+            Nombre.Enabled = false;
+            Apellido.Enabled = false;
+            Matricula.Enabled = false;
+            Carrera.Enabled = false;
+            Seccion.Enabled = false;
+
+            Class1 Conex = new Class1();
+            Conex.abrir();
+
+
+
+            SqlCommand comand = new SqlCommand("SELECT  * FROM AsignaturaProfesor WHERE Matricula = @matricula ", Conex.Obtener());
+            comand.Parameters.AddWithValue("@matricula", datos[2]);
+      
+
+
+            SqlDataReader dr = comand.ExecuteReader();
+            while (dr.Read())
+            {
+                Materias.Items.Add(dr["Nombre"].ToString());
+               
+            }
+
+
+            Conex.cerrar();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            string estudiante = $"{BuscarMatricula.Text}|{textBox1.Text}|{textBox2.Text}|{textBox3.Text}|{textBox4.Text}|{textBox5.Text}|";
 
+        }
 
-            StreamWriter pegar = File.AppendText("lista.txt");
+        private void label4_Click(object sender, EventArgs e)
+        {
 
-            pegar.WriteLine(estudiante);
+        }
 
-            pegar.Close();
-            this.Dispose();
+        private void Materias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Seccion.Items.Clear();
+            Class1 Conex = new Class1();
+            Conex.abrir();
+            if (Materias.SelectedItem != null)
+            {
+                Seccion.Enabled = true;
+                SqlCommand comando = new SqlCommand("SELECT * FROM Alumnos WHERE carrera = @materia", Conex.Obtener());
+                comando.Parameters.AddWithValue("@materia", Materias.SelectedItem.ToString());
+                SqlDataAdapter data = new SqlDataAdapter();
+
+                data.SelectCommand = comando;
+
+                DataTable tabla = new DataTable();
+                data.Fill(tabla);
+                dataGridView1.DataSource = tabla;
+
+                
+
+                SqlCommand comand = new SqlCommand("SELECT  Seccion FROM AsignaturaProfesor WHERE Matricula = @matricula AND Nombre = @nombre", Conex.Obtener());
+                comand.Parameters.AddWithValue("@matricula", datos[2]);
+                comand.Parameters.AddWithValue("@nombre", Materias.SelectedItem.ToString());
+
+                SqlDataReader dr = comand.ExecuteReader();
+                while (dr.Read())
+                {
+                   
+                    Seccion.Items.Add(dr["Seccion"].ToString());
+                }
+
+            }
+        }
+
+        private void Seccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Columns.Clear();
+           
+
+            Class1 Conex = new Class1();
+            Conex.abrir();
+            if (Materias.SelectedItem != null && Seccion.SelectedItem != null)
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM Alumnos WHERE carrera = @materia AND Seccion =@seccion", Conex.Obtener());
+                comando.Parameters.AddWithValue("@materia", Materias.SelectedItem.ToString());
+                comando.Parameters.AddWithValue("@seccion", Seccion.SelectedItem.ToString());
+                SqlDataAdapter data = new SqlDataAdapter();
+
+                data.SelectCommand = comando;
+
+                DataTable tabla = new DataTable();
+                data.Fill(tabla);
+                dataGridView1.DataSource = tabla;
+
+                Conex.cerrar();
+            }
+        }
+            private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Nombre.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            Apellido.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            Matricula.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            Carrera.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+           
         }
     }
 }

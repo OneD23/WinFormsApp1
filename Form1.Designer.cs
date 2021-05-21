@@ -29,100 +29,104 @@ namespace WinFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.registrar = new System.Windows.Forms.Button();
-            this.calificar = new System.Windows.Forms.Button();
-            this.listar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.asistencia = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.usuario = new System.Windows.Forms.TextBox();
+            this.contraseña = new System.Windows.Forms.TextBox();
+            this.Login = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.label1.Location = new System.Drawing.Point(37, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 40);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Control de estudiantes";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rockwell", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(12, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(349, 39);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "INICIO DE SECCION";
             // 
-            // registrar
+            // label3
             // 
-            this.registrar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.registrar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.registrar.ForeColor = System.Drawing.Color.SkyBlue;
-            this.registrar.Location = new System.Drawing.Point(12, 123);
-            this.registrar.Name = "registrar";
-            this.registrar.Size = new System.Drawing.Size(109, 38);
-            this.registrar.TabIndex = 1;
-            this.registrar.Text = "Registrar";
-            this.registrar.UseVisualStyleBackColor = false;
-            this.registrar.Click += new System.EventHandler(this.registrar_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rockwell", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(142, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 32);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "USER";
             // 
-            // calificar
+            // label4
             // 
-            this.calificar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.calificar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.calificar.ForeColor = System.Drawing.Color.SkyBlue;
-            this.calificar.Location = new System.Drawing.Point(242, 123);
-            this.calificar.Name = "calificar";
-            this.calificar.Size = new System.Drawing.Size(109, 38);
-            this.calificar.TabIndex = 1;
-            this.calificar.Text = "Calificar";
-            this.calificar.UseVisualStyleBackColor = false;
-            this.calificar.Click += new System.EventHandler(this.calificar_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Showcard Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(105, 185);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(198, 36);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "CONTRASEÑA";
             // 
-            // listar
+            // label5
             // 
-            this.listar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.listar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listar.ForeColor = System.Drawing.Color.SkyBlue;
-            this.listar.Location = new System.Drawing.Point(357, 123);
-            this.listar.Name = "listar";
-            this.listar.Size = new System.Drawing.Size(109, 38);
-            this.listar.TabIndex = 1;
-            this.listar.Text = "Listar";
-            this.listar.UseVisualStyleBackColor = false;
-            this.listar.Click += new System.EventHandler(this.listar_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Rockwell", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(88, 185);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "CONTRASEÑA";
             // 
-            // button1
+            // usuario
             // 
-            this.button1.Location = new System.Drawing.Point(203, 206);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.usuario.Location = new System.Drawing.Point(78, 141);
+            this.usuario.Name = "usuario";
+            this.usuario.Size = new System.Drawing.Size(218, 23);
+            this.usuario.TabIndex = 1;
             // 
-            // asistencia
+            // contraseña
             // 
-            this.asistencia.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.asistencia.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.asistencia.ForeColor = System.Drawing.Color.SkyBlue;
-            this.asistencia.Location = new System.Drawing.Point(127, 123);
-            this.asistencia.Name = "asistencia";
-            this.asistencia.Size = new System.Drawing.Size(109, 38);
-            this.asistencia.TabIndex = 1;
-            this.asistencia.Text = "Borrar";
-            this.asistencia.UseVisualStyleBackColor = false;
-            this.asistencia.Click += new System.EventHandler(this.asistencia_Click);
+            this.contraseña.Location = new System.Drawing.Point(78, 235);
+            this.contraseña.Name = "contraseña";
+            this.contraseña.PasswordChar = '*';
+            this.contraseña.Size = new System.Drawing.Size(218, 23);
+            this.contraseña.TabIndex = 1;
+            // 
+            // Login
+            // 
+            this.Login.Location = new System.Drawing.Point(110, 283);
+            this.Login.Name = "Login";
+            this.Login.Size = new System.Drawing.Size(140, 35);
+            this.Login.TabIndex = 2;
+            this.Login.Text = "Iniciar Seccion";
+            this.Login.UseVisualStyleBackColor = true;
+            this.Login.Click += new System.EventHandler(this.Login_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label6.Location = new System.Drawing.Point(114, 339);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 15);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Aun no estas registrado?";
             // 
             // inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 251);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listar);
-            this.Controls.Add(this.calificar);
-            this.Controls.Add(this.asistencia);
-            this.Controls.Add(this.registrar);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(381, 391);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Login);
+            this.Controls.Add(this.contraseña);
+            this.Controls.Add(this.usuario);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Name = "inicio";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,12 +134,15 @@ namespace WinFormsApp1
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button registrar;
-        private System.Windows.Forms.Button calificar;
-        private System.Windows.Forms.Button listar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button asistencia;
+        
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox usuario;
+        private System.Windows.Forms.TextBox contraseña;
+        private System.Windows.Forms.Button Login;
+        private System.Windows.Forms.Label label6;
     }
 }
 

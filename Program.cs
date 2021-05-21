@@ -11,13 +11,15 @@ namespace WinFormsApp1
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        public static inicio inicio;
         [STAThread]
         static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new inicio());
+            Application.Run(inicio = new inicio());
         }
     }
 }
